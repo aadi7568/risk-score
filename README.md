@@ -1,3 +1,19 @@
+# Contract Risk Analyzer
+
+A powerful web application that analyzes contracts and legal documents to identify potential risks and provide detailed insights. Using advanced AI technology, it helps legal professionals, businesses, and individuals quickly assess the risk level of their contracts and identify potentially problematic clauses.
+
+## Features
+
+- **Risk Score Analysis**: Get an overall risk score (0-100%) for your contract
+- **Smart Clause Detection**: Automatically identifies potentially risky clauses in the document
+- **Detailed Explanations**: Each risky clause comes with a clear explanation of the potential issues
+- **Risk Categorization**: Clauses are categorized by type (e.g., liability, termination, confidentiality)
+- **Severity Levels**: Each identified risk is classified as High, Medium, or Low severity
+- **Modern Web Interface**: User-friendly interface for easy document upload and analysis
+- **Multiple File Support**: Analyzes PDF, Word documents, and text files
+- **Real-time Analysis**: Quick processing with immediate results
+- **Reference Document Comparison**: Optional feature to compare against reference documents
+
 ## Directory Structure
 
 ```text
