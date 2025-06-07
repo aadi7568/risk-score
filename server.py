@@ -6,6 +6,8 @@ from core.doc_processor import DocumentProcessor
 from core.vector_store import EmbeddingManager
 from core.analyzer import RiskAnalyzer
 import re
+from typing import Dict
+from fastapi import HTTPException
 
 app = FastAPI()
 
@@ -21,65 +23,76 @@ app.mount("/static", StaticFiles(directory="web_interface"), name="static")
 async def read_root():
     return FileResponse("web_interface/index.html")
 
-def parse_analysis(analysis_text):
+def parse_analysis(analysis_text: str) -> Dict:
     """Parse the analysis text to extract clauses, categories, and severity."""
     clauses = []
     categories = []
-    severities = []
+    severity = []
     
-    # Regular expressions for matching
-    clause_pattern = r'\d+\.\s*(.*?)\s*\[(High|Medium|Low)\s*Risk\]\s*\[(.*?)\]\s*-\s*(.*)'
+    # Updated pattern to match format without score
+    pattern = r'\d+\.\s*(.*?)\s*\[(High|Medium|Low)\s*Risk\]\s*\[(.*?)\]\s*-\s*(.*)'
     
-    # Find all matches
-    matches = re.finditer(clause_pattern, analysis_text)
-    for match in matches:
+    for match in re.finditer(pattern, analysis_text):
         clause_text = match.group(1).strip()
-        severity = match.group(2).strip()
+        risk_level = match.group(2).strip()
         category = match.group(3).strip()
+        explanation = match.group(4).strip()
         
         # Format the clause with its explanation
-        full_clause = f"{clause_text} - {match.group(4).strip()}"
+        full_clause = f"{clause_text} - {explanation}"
         
         clauses.append(full_clause)
-        severities.append(f"{severity} Risk")
         categories.append(category)
+        severity.append(f"{risk_level} Risk")
     
-    return clauses, categories, severities
+    return {
+        'risky_clauses': clauses,
+        'risk_categories': categories,
+        'clause_severity': severity
+    }
 
 @app.post("/analyze")
 async def analyze_document(file: UploadFile = File(...)):
-    # Save uploaded file temporarily
-    temp_path = f"temp_{file.filename}"
+    """Analyze uploaded document and return risk assessment."""
     try:
-        with open(temp_path, "wb") as buffer:
+        # Save uploaded file
+        file_path = f"temp_{file.filename}"
+        with open(file_path, "wb") as buffer:
             content = await file.read()
             buffer.write(content)
         
         # Process document
-        chunks = doc_processor.process_document(temp_path)
+        doc_processor = DocumentProcessor()
+        chunks = doc_processor.process_document(file_path)
         
-        # Find similar documents
+        # Get similar documents
+        embedding_manager = EmbeddingManager()
         similar_docs = []
         for chunk in chunks:
             similar_docs.extend(embedding_manager.search_similar(chunk['text']))
         
         # Analyze document
-        analysis_result = risk_analyzer.analyze_document(chunks, similar_docs)
+        analyzer = RiskAnalyzer()
+        analysis = analyzer.analyze_document(chunks, similar_docs)
         
-        # Parse the analysis text to extract clauses, categories, and severity
-        risky_clauses, risk_categories, clause_severity = parse_analysis(analysis_result['analysis'])
+        # Extract risk score
+        risk_score = analysis['risk_score']
         
-        # Return the formatted response
-        return {
-            'risk_score': analysis_result['risk_score'],
-            'risky_clauses': risky_clauses,
-            'risk_categories': risk_categories,
-            'clause_severity': clause_severity
-        }
-    finally:
+        # Parse analysis to get clauses, categories, and severity
+        parsed_analysis = parse_analysis(analysis['analysis'])
+        
         # Clean up temporary file
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
+        os.remove(file_path)
+        
+        return {
+            "risk_score": risk_score,
+            "risky_clauses": parsed_analysis['risky_clauses'],
+            "risk_categories": parsed_analysis['risk_categories'],
+            "clause_severity": parsed_analysis['clause_severity']
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn

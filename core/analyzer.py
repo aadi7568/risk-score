@@ -28,56 +28,75 @@ CRITICAL INSTRUCTION: Do NOT flag standard legal clauses (like basic payment ter
 
 Focus only on identifying clauses that introduce substantial risk, disproportionate liability, or severely limit the Client's rights or recourse compared to a balanced agreement.
 
-Risk Categories:
-Legal Risk:
-- Unusual or one-sided terms
-- Non-standard clauses
-- Potential legal conflicts
-- Governing law or jurisdiction biased toward one party
-- Unilateral amendment rights
-- Unfavorable termination conditions
-- Inflexible or high-cost dispute resolution mechanisms
+Risk Categories and Multipliers:
+1. Legal Risk (4x multiplier):
+   - Unusual or one-sided terms
+   - Non-standard clauses
+   - Potential legal conflicts
+   - Governing law or jurisdiction biased toward one party
+   - Unilateral amendment rights
+   - Unfavorable termination conditions
+   - Inflexible or high-cost dispute resolution mechanisms
 
-Financial Risk:
-- Hidden liabilities
-- Unreasonable payment terms or penalties
-- Broad or unclear indemnification obligations
-- Unlimited or missing liability caps
-- Lack of control over subcontractors or third parties
+2. Financial Risk (3x multiplier):
+   - Hidden liabilities
+   - Unreasonable payment terms or penalties
+   - Broad or unclear indemnification obligations
+   - Unlimited or missing liability caps
+   - Lack of control over subcontractors or third parties
 
-Compliance & Regulatory Risk:
-- Unspecified or burdensome compliance obligations
-- Weak confidentiality or data protection terms
-- Vague or unfair force majeure definitions
+3. Compliance & Regulatory Risk (2x multiplier):
+   - Unspecified or burdensome compliance obligations
+   - Weak confidentiality or data protection terms
+   - Vague or unfair force majeure definitions
 
-Operational Risk:
-- Ambiguous language
-- Vague or non-measurable performance obligations (e.g., SLAs)
-- Unclear intellectual property ownership
+4. Operational Risk (1x multiplier):
+   - Ambiguous language
+   - Vague or non-measurable performance obligations (e.g., SLAs)
+   - Unclear intellectual property ownership
+
+Base Severity Scores:
+- High Risk: 30 points
+- Medium Risk: 20 points
+- Low Risk: 10 points
+
+Risk Score Calculation:
+1. Calculate individual clause scores:
+   - Base Score × Category Multiplier = Clause Score
+   Example: High Risk (30) × Legal Risk (4x) = 120 points
+
+2. Select top 5 highest-scoring clauses
+
+3. Calculate overall risk score:
+   - Sum of top 5 clause scores
+   - Normalize to 0-100 scale using the formula:
+     Final Score = (Sum of top 5 scores / Maximum possible score) × 100
+     Where Maximum possible score = 5 × (30 × 4) = 600
+     (5 clauses × Highest base score × Highest multiplier)
+
+4. Minimum Score Rules:
+   - If no risky clauses are found: Score = 5 (indicating very low risk)
+   - If only Low Risk clauses found: Minimum Score = 10
+   - If only Medium Risk clauses found: Minimum Score = 20
+   - If High Risk clauses found: Use calculated score
 
 Analysis Requirements:
 1. Identify the top 5 most significantly risky clauses based on the criteria above. If fewer than 5 such clauses exist, list only those that do.
-2. CRITICAL: List the clauses in descending order of risk severity - where #1 represents the highest risk clause, #2 the second highest risk, and so on through #5 being the lowest risk among those identified.
+2. CRITICAL: List the clauses in descending order of calculated risk score - where #1 represents the highest scoring clause, #2 the second highest, and so on through #5 being the lowest among those identified.
 3. For each identified clause, you MUST provide ALL of the following:
    - The full clause text.
    - An explicit severity tag: [High Risk], [Medium Risk], or [Low Risk].
    - The risk category from the four types above: [Legal Risk], [Financial Risk], [Compliance & Regulatory Risk], or [Operational Risk].
-   - A concise, one-line explanation of why it is significantly and unusually risky for the Client. If a clause is flagged but the risk is minimal, provide a brief explanation of why it might still be a minor concern.
-4. Provide a single risk score from 0-100 (where 100 indicates extreme, critical risk for the Client), reflecting the overall level of significant, unusual, and unfavorable risk in the document based on the clauses identified.
+   - A concise, one-line explanation of why it is significantly and unusually risky for the Client.
 
-Risk Score Guidelines (reflecting significant, unusual risk):
-- 0-10: Very Low Risk - Contains only standard, balanced clauses with virtually no significant, unusual risks.
-- 11-30: Low Risk - Contains mostly standard clauses with very few or only extremely mild deviations that pose limited, low-level concern.
-- 31-50: Moderate Risk - Contains some clauses with noticeable imbalances or potential disadvantages.
-- 51-70: High Risk - Contains multiple clauses with significant risks that warrant careful review and negotiation.
-- 71-100: Critical Risk - Contains clauses with severe, highly unfavorable, or hidden terms that pose critical risks and require immediate revision.
+4. Calculate and provide the final normalized risk score (0-100), following the minimum score rules above.
 
-STRICT FORMATTING: For the "Top 5 Risky Clauses" list, each numbered item MUST contain ONLY the full clause text content WITHOUT any section numbers, headers, or reference numbers (such as 2.3, 4.1, Section A, etc.). Do NOT include any document section numbering - extract only the pure clause language. Follow this exact format for EACH item: the full clause text, then a space, then the severity tag in brackets, then a space, then the risk category in brackets, then " - " and the one-line explanation. Example: `[Full Clause text] [High Risk] [Legal Risk] - [One line explanation]`. If you cannot extract the full clause text or provide all required tagging and explanation for a potential risky clause, you MUST exclude it from the numbered list. If no significant risks are found that can be fully formatted, state "No significant risky clauses found."
+STRICT FORMATTING: For the "Top 5 Risky Clauses" list, each numbered item MUST contain ONLY the full clause text content WITHOUT any section numbers, headers, or reference numbers (such as 2.3, 4.1, Section A, etc.). Do NOT include any document section numbering - extract only the pure clause language. Follow this exact format for EACH item: `[Full Clause text] [Severity] [Risk Category] - [One line explanation]`. If you cannot extract the full clause text or provide all required tagging and explanation for a potential risky clause, you MUST exclude it from the numbered list. If no significant risks are found that can be fully formatted, state "No significant risky clauses found."
 
 Format your response exactly as follows:
 Risk Score: XX
 
-Top 5 Risky Clauses (Listed in Descending Order of Risk Severity):
+Top 5 Risky Clauses (Listed in Descending Order of Risk Score):
 1. [Full Clause text] [Severity] [Risk Category] - [One line explanation of significant risk]
 2. [Full Clause text] [Severity] [Risk Category] - [One line explanation of significant risk]
 3. [Full Clause text] [Severity] [Risk Category] - [One line explanation of significant risk]
@@ -92,56 +111,6 @@ Top 5 Risky Clauses (Listed in Descending Order of Risk Severity):
     def _hash_content(self, content: str) -> str:
         """Generate a hash for content to use as cache key."""
         return hashlib.md5(content.encode()).hexdigest()
-
-    def _calibrate_risk_score(self, score: int, clauses: List[str]) -> int:
-        """Calibrate the risk score based on the number and severity of risky clauses."""
-        calibrated_score = score
-        
-        # Check if any significant severity keywords are present in the identified clauses
-        has_severe_keywords = False
-        severe_keywords = ['immediately', 'without cause', 'no rights', 'unlimited', 'waives', 'exclusive', 'notwithstanding', 'indemnify', 'liable for', 'hold harmless'] # Add more high-impact keywords here
-        
-        for clause in clauses:
-            for keyword in severe_keywords:
-                if keyword.lower() in clause.lower():
-                    has_severe_keywords = True
-                    break
-            if has_severe_keywords:
-                break
-
-        # If model identified clauses, but none have severe keywords, significantly reduce score (slightly less aggressive reduction)
-        if clauses and not has_severe_keywords:
-             calibrated_score = max(0, calibrated_score - 30) # Reduced from 40
-             
-        # Adjust based on number of clauses (less impact now)
-        num_clauses = len(clauses)
-        if num_clauses < 2 and not has_severe_keywords:
-            calibrated_score = max(0, calibrated_score - 10) # Reduced from 15
-        elif num_clauses > 3 and has_severe_keywords:
-            calibrated_score = min(100, calibrated_score + 10)
-            
-        # Existing adjustment based on individual severity keywords (kept for nuance)
-        individual_severity_keywords = {
-            'immediately': 5,
-            'without cause': 8,
-            'no rights': 5,
-            'unlimited': 8,
-            'any time': 5,
-            'without notice': 5,
-            'waives': 8,
-            'exclusive': 3,
-            'strict': 2
-        }
-        
-        for clause in clauses:
-            for keyword, adjustment in individual_severity_keywords.items():
-                if keyword.lower() in clause.lower():
-                    calibrated_score = min(100, calibrated_score + adjustment)
-        
-        # Ensure score is within 0-100
-        calibrated_score = max(0, min(100, calibrated_score))
-
-        return calibrated_score
 
     def analyze_document(self, document_chunks: List[Dict], similar_docs: List[Dict]) -> Dict:
         """
@@ -193,13 +162,6 @@ Please analyze the document and provide the risk score and top 5 risky clauses i
         
         # Extract risk score and clauses
         risk_score = self._extract_risk_score(analysis)
-        clauses = self._extract_risky_clauses(analysis)
-        
-        # Calibrate the risk score
-        calibrated_score = self._calibrate_risk_score(risk_score, clauses)
-        
-        # Update the analysis text with calibrated score
-        analysis = analysis.replace(f"Risk Score: {risk_score}", f"Risk Score: {calibrated_score}")
         
         # Cache the analysis
         self._get_cached_analysis.cache_clear()  # Clear old cache entries
@@ -207,7 +169,7 @@ Please analyze the document and provide the risk score and top 5 risky clauses i
         
         return {
             'analysis': analysis,
-            'risk_score': calibrated_score,
+            'risk_score': risk_score,
             'document_chunks': document_chunks,
             'similar_docs': similar_docs
         }
