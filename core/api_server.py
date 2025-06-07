@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from typing import Optional, List
 import os
-from main import analyze_document
+from cli import analyze_document
 import re
 import shutil
 
@@ -20,12 +20,12 @@ app.add_middleware(
     max_age=3600,  # Cache preflight requests for 1 hour
 )
 
-# Serve static files from the 'static_frontend' directory
-app.mount("/static", StaticFiles(directory="static_frontend"), name="static")
+# Serve static files from the 'web_interface' directory
+app.mount("/static", StaticFiles(directory="web_interface"), name="static")
 
 @app.get("/")
 async def read_index():
-    return FileResponse("static_frontend/index.html")
+    return FileResponse("web_interface/index.html")
 
 def parse_analysis(analysis_text: str) -> dict:
     """Parse the analysis text to extract risk score, and fully formatted risky clauses from LLM output."""
@@ -86,15 +86,15 @@ def parse_analysis(analysis_text: str) -> dict:
 
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
-    # Create documents directory if it doesn't exist
-    os.makedirs("documents", exist_ok=True)
+    # Create legal_docs directory if it doesn't exist
+    os.makedirs("legal_docs", exist_ok=True)
     
-    # Save the uploaded file to the documents folder
-    file_path = os.path.join("documents", file.filename)
+    # Save the uploaded file to the legal_docs folder
+    file_path = os.path.join("legal_docs", file.filename)
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     
-    # Analyze the document using the globally initialized components from main
+    # Analyze the document using the globally initialized components from cli
     analysis = analyze_document(file_path)
     
     # Parse the analysis

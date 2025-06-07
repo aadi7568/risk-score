@@ -1,9 +1,9 @@
 import os
 import argparse
 from typing import List
-from document_processor import DocumentProcessor
-from embedding_manager import EmbeddingManager
-from risk_analyzer import RiskAnalyzer
+from core.doc_processor import DocumentProcessor
+from core.vector_store import EmbeddingManager
+from core.analyzer import RiskAnalyzer
 
 # Initialize components globally
 embedding_manager = EmbeddingManager()

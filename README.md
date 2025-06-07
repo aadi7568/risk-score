@@ -18,13 +18,21 @@ A powerful web application that analyzes contracts and legal documents to identi
 
 ```text
 risk-score/
-├── documents/              # Place your documents to analyze here
-├── reference_documents/    # Place your reference documents here
-├── static_frontend/        # Frontend HTML, CSS, and JS files
-├── api.py                  # FastAPI application
-├── main.py                 # Original CLI entry point (can be kept or removed)
-├── requirements.txt
-└── ... (other Python files)
+├── legal_docs/              # Place your documents to analyze here
+├── reference_docs/          # Place your reference documents here
+├── web_interface/          # Frontend HTML, CSS, and JS files
+│   ├── index.html         # Main web interface
+│   ├── style.css          # Styling
+│   └── script.js          # Frontend logic
+├── core/                   # Core application files
+│   ├── analyzer.py        # Main analysis logic
+│   ├── doc_processor.py   # Document processing utilities
+│   └── vector_store.py    # Vector database management
+├── vector_db/             # Vector database storage
+├── server.py              # FastAPI server
+├── cli.py                 # Command-line interface
+├── requirements.txt       # Python dependencies
+└── README.md             # Project documentation
 ```
 
 ## Prerequisites
@@ -55,8 +63,8 @@ risk-score/
      ```
 
 4. **Place your documents (Optional):**
-   - You can place documents you want to analyze in the `documents/` directory. The API also supports uploading files directly.
-   - You can place reference documents in the `reference_documents/` directory if you want to use the similarity feature.
+   - You can place documents you want to analyze in the `legal_docs/` directory. The API also supports uploading files directly.
+   - You can place reference documents in the `reference_docs/` directory if you want to use the similarity feature.
 
 ## Running the API
 
@@ -65,7 +73,7 @@ To run the FastAPI server and access the web interface:
 1. **Ensure your virtual environment is activated** (see Setup step 2).
 2. **Start the FastAPI server:**
    ```bash
-   uvicorn api:app --reload
+   uvicorn server:app --reload
    ```
 
    The API will be running at `http://localhost:8000/`.
@@ -78,17 +86,17 @@ From the web interface, you can upload a document and generate its risk score.
 
 ## Running the CLI (Optional)
 
-If you still want to use the original command-line interface:
+If you want to use the command-line interface:
 
 1. **Ensure your virtual environment is activated** (see Setup step 2).
 2. **Run the analysis:**
    ```bash
-   python main.py --document documents/sample_contract.txt
+   python cli.py --document legal_docs/sample_contract.txt
    ```
 
    If you have reference documents, you can include them:
    ```bash
-   python main.py --document documents/sample_contract.txt --reference-dir reference_docs
+   python cli.py --document legal_docs/sample_contract.txt --reference_dir reference_docs
    ```
 
 ## Supported Document Types
@@ -99,7 +107,11 @@ If you still want to use the original command-line interface:
 
 ## Output
 
-The API will return a JSON object with the risk score and a list of risky clauses with explanations.
+The API will return a JSON object with:
+- Risk score (0-100)
+- List of risky clauses with their explanations
+- Risk categories for each clause
+- Severity levels (High, Medium, Low) for each clause
 
 ## Troubleshooting
 
@@ -111,14 +123,14 @@ The API will return a JSON object with the risk score and a list of risky clause
    - Make sure all dependencies are installed using `pip install -r requirements.txt`.
 
 3. **Server Not Running:**
-   - Ensure you have started the FastAPI server using `uvicorn api:app --reload`.
+   - Ensure you have started the FastAPI server using `uvicorn server:app --reload`.
 
 ## Development
 
 To modify the application:
 
 1. Make your changes to the Python files.
-2. The `uvicorn api:app --reload` command will automatically restart the server when code changes are detected.
+2. The `uvicorn server:app --reload` command will automatically restart the server when code changes are detected.
 3. Refresh your web browser to see frontend changes.
 
 ## License

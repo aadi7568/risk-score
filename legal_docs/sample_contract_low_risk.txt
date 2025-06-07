@@ -1,0 +1,48 @@
+SERVICE AGREEMENT
+
+This Service Agreement ("Agreement") is entered into between [Company Name] ("Service Provider") and [Client Name] ("Client") on [Date].
+
+1. Services
+The Service Provider agrees to provide consulting services as outlined in the project scope document. The services will be delivered with reasonable care and skill.
+
+2. Payment Terms
+Payment is due within 30 days of invoice date. Late payments will incur a standard interest rate of 1.5% per month.
+
+3. Confidentiality
+Both parties agree to maintain the confidentiality of any proprietary information shared during the course of this agreement. This obligation remains in effect for 2 years after the agreement ends.
+
+4. Intellectual Property
+The Client will own all work product created specifically for this project. The Service Provider retains rights to any pre-existing materials or general methodologies used.
+
+5. Termination
+Either party may terminate this agreement with 30 days written notice. Upon termination, the Client will pay for all services rendered up to the termination date.
+
+6. Limitation of Liability
+The Service Provider's liability is limited to the total amount paid by the Client under this agreement. This limitation does not apply to gross negligence or willful misconduct.
+
+7. Warranty
+The Service Provider warrants that the services will be performed in a professional manner consistent with industry standards.
+
+8. Dispute Resolution
+Any disputes will be resolved through good-faith negotiations. If unresolved, disputes will be submitted to mediation before any legal action.
+
+9. Force Majeure
+Neither party will be liable for delays or failures to perform due to circumstances beyond reasonable control.
+
+10. Governing Law
+This agreement is governed by the laws of the state of [State], without regard to its conflict of law principles.
+
+11. Entire Agreement
+This document represents the entire agreement between the parties and supersedes all prior discussions and agreements.
+
+12. Amendments
+Any amendments to this agreement must be made in writing and signed by both parties.
+
+13. Assignment
+Neither party may assign this agreement without the other party's written consent.
+
+14. Notices
+All notices must be in writing and delivered via email or certified mail.
+
+15. Severability
+If any provision is found to be unenforceable, the remaining provisions will remain in effect. 

@@ -1,0 +1,186 @@
+COMPREHENSIVE SERVICE AGREEMENT
+
+This Comprehensive Service Agreement ("Agreement") is entered into between [Company Name] ("Service Provider") and [Client Name] ("Client") on [Date].
+
+1. Services and Deliverables
+1.1 The Service Provider agrees to provide comprehensive consulting and development services as outlined in the project scope document.
+1.2 All deliverables will be provided in accordance with the project timeline and milestones.
+1.3 The Service Provider reserves the right to modify the delivery schedule with 15 days notice to the Client.
+1.4 The Client may request changes to the scope, which will be evaluated and may result in additional charges.
+
+2. Payment Terms and Conditions
+2.1 Payment Schedule
+- 30% advance payment upon agreement signing
+- 40% upon completion of major milestones
+- 30% upon final delivery and acceptance
+2.2 Late payments will incur an interest rate of 2% per month, compounded monthly.
+2.3 The Client must pay all applicable taxes and fees.
+2.4 The Service Provider may suspend services if payments are delayed by more than 15 days.
+
+3. Confidentiality and Data Protection
+3.1 Both parties agree to maintain strict confidentiality of all proprietary information.
+3.2 The confidentiality obligation extends for 3 years after agreement termination.
+3.3 The Service Provider may use anonymized data for improving services.
+3.4 The Client is responsible for ensuring compliance with data protection regulations.
+3.5 The Service Provider will implement reasonable security measures but cannot guarantee absolute security.
+
+4. Intellectual Property Rights
+4.1 The Client will own all work product created specifically for this project.
+4.2 The Service Provider retains rights to:
+   - Pre-existing materials and methodologies
+   - General knowledge and experience gained
+   - Tools and frameworks developed
+4.3 The Client grants a non-exclusive license to use their brand assets for project purposes.
+4.4 The Service Provider may include the project in their portfolio with Client approval.
+
+5. Project Management and Communication
+5.1 Weekly status meetings will be conducted.
+5.2 The Client will appoint a project manager for coordination.
+5.3 The Service Provider will provide regular progress reports.
+5.4 Communication will primarily be through the project management system.
+5.5 Emergency issues may be communicated directly to the project leads.
+
+6. Quality Assurance and Testing
+6.1 The Service Provider will conduct thorough testing before delivery.
+6.2 The Client will have 14 days to review and provide feedback.
+6.3 Critical issues must be fixed within 5 business days.
+6.4 Minor issues will be addressed in the next update cycle.
+6.5 The Service Provider is not responsible for issues arising from Client's environment.
+
+7. Service Level Agreement
+7.1 Response Times:
+   - Critical issues: 2 hours
+   - High priority: 4 hours
+   - Medium priority: 24 hours
+   - Low priority: 48 hours
+7.2 Service availability target: 99.5%
+7.3 Scheduled maintenance will be notified 7 days in advance
+7.4 Emergency maintenance may be performed with 2 hours notice
+
+8. Termination and Transition
+8.1 Either party may terminate with 45 days written notice.
+8.2 The Service Provider may terminate immediately for:
+   - Non-payment exceeding 30 days
+   - Material breach of agreement
+   - Illegal activities
+8.3 Upon termination:
+   - The Client will pay for all services rendered
+   - The Service Provider will provide transition assistance
+   - All deliverables will be transferred to the Client
+8.4 The Service Provider may charge for transition services
+
+9. Limitation of Liability
+9.1 The Service Provider's liability is limited to:
+   - Direct damages up to the total amount paid
+   - Excludes indirect, consequential, or special damages
+9.2 The Client's liability is limited to:
+   - Payment of agreed fees
+   - Direct damages caused by breach
+9.3 Neither party is liable for force majeure events
+
+10. Warranty and Support
+10.1 The Service Provider warrants:
+   - Services will be performed professionally
+   - Deliverables will be free from material defects
+   - Compliance with applicable laws
+10.2 Support is provided for 90 days after delivery
+10.3 Extended support may be purchased separately
+
+11. Dispute Resolution
+11.1 Good-faith negotiations for 30 days
+11.2 Mediation if negotiations fail
+11.3 Arbitration as a last resort
+11.4 Governing law: [State] law
+11.5 Venue: [City], [State]
+
+12. Insurance and Indemnification
+12.1 The Service Provider will maintain:
+   - Professional liability insurance
+   - General liability insurance
+   - Cyber liability insurance
+12.2 The Client will indemnify against:
+   - Third-party claims from Client's use
+   - Intellectual property claims
+   - Regulatory violations
+
+13. Compliance and Regulations
+13.1 Both parties will comply with:
+   - Applicable laws and regulations
+   - Industry standards
+   - Data protection requirements
+13.2 The Service Provider will maintain necessary licenses
+13.3 The Client will provide required documentation
+
+14. Amendments and Modifications
+14.1 Changes require written agreement
+14.2 Minor changes may be approved by project managers
+14.3 Major changes require executive approval
+14.4 All changes will be documented
+
+15. Assignment and Subcontracting
+15.1 The Service Provider may subcontract with notice
+15.2 The Client may not assign without consent
+15.3 Subcontractors must meet security requirements
+15.4 The Service Provider remains responsible for subcontractors
+
+16. Notices and Communications
+16.1 All notices must be in writing
+16.2 Delivery methods:
+   - Email to designated addresses
+   - Certified mail
+   - Courier service
+16.3 Notices are effective upon receipt
+
+17. Force Majeure
+17.1 Neither party is liable for:
+   - Natural disasters
+   - Government actions
+   - Network failures
+   - Other uncontrollable events
+17.2 Affected party must notify within 24 hours
+17.3 Parties will work to minimize impact
+
+18. Entire Agreement
+18.1 This document represents the complete agreement
+18.2 Supersedes all prior discussions
+18.3 No oral modifications are binding
+18.4 Appendices are part of this agreement
+
+19. Severability
+19.1 If any provision is unenforceable:
+   - The rest of the agreement remains valid
+   - The provision will be modified to be enforceable
+   - The intent will be preserved
+
+20. Survival
+20.1 The following survive termination:
+   - Confidentiality obligations
+   - Payment obligations
+   - Intellectual property rights
+   - Limitation of liability
+   - Dispute resolution
+
+21. Counterparts
+21.1 This agreement may be signed in counterparts
+21.2 Electronic signatures are valid
+21.3 All counterparts together form one agreement
+
+22. Governing Law
+22.1 This agreement is governed by [State] law
+22.2 Jurisdiction is in [County], [State]
+22.3 Choice of law rules are excluded
+
+23. Waiver
+23.1 Failure to enforce any provision is not a waiver
+23.2 Waivers must be in writing
+23.3 Partial waivers don't affect other rights
+
+24. Headings
+24.1 Section headings are for reference only
+24.2 Don't affect interpretation
+24.3 May be used in legal proceedings
+
+25. Third-Party Beneficiaries
+25.1 No third-party rights are created
+25.2 No third-party enforcement is allowed
+25.3 No third-party claims are permitted 
